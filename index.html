@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>3D Histogram</title>
+	<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+	<link rel="stylesheet" href="./css/rzslider.min.css">
+	<link rel="stylesheet" href="./css/lumx.css">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+	
+</head>
+<body ng-app="histogram-app">
+	
+	<div class="card">
+		<div class="toolbar bgc-blue-500">
+			<span class="toolbar__label fs-title tc-white-1">3D Histogram App</span>
+		</div>
+	</div>
+	<div ng-controller="mainController">
+		
+		<div class="mt++" flex-gutter="12" flex-container="row">
+			<!-- Left -->
+			<div flex-item="4" flex-item-order="1" flex-container="column">
+				<!--Left Top -->
+				<div class=" ml+ mr+ bgc-white-1 card" flex-align="center" style="min-heigth:200px">
+				<!-- Image Selector -->
+					<div class="ml mr mb++" flex-item="4" flex-container="column">
+						<span class="fs-display-1 display-block mt++ ml">{{uploadTitle}}</span>
+						<form>
+							<lx-file-input name="file" change="uploadImg(e)" label="{{uploadLabel}}"></lx-file-input>
+						</form>
+					</div>
+				 </div>
+				 <!--Left Bottom -->
+				 <div class="p ml+ mr+ mt++ bcg-white-1 card"  flex-align="center">
+					 <!-- Image Preview-->
+					<image-canvas class="ml++" flex-align="center" uploader-func="UploaderServiceGetter()"></image-canvas>
+				 </div>
+			</div>
+			<!-- Right -->
+			<div flex-item="8" flex-item-order="2">
+				<!-- Right Top-->
+				<div class="card p+ ml+ mr+ mb bgc-white-1">
+				<!-- Toolbar -->
+					<toolbar-canvas></toolbar-canvas>
+				</div>
+				<!-- Right Middle-->
+				<div class="card p+ ml+ mr+ mt bgc-white-1">
+					<!-- Histogram -->
+					<scene-canvas></scene-canvas>
+				</div>
+				<!-- Right Bottom-->
+				<div class="card p+ ml+ mr+ mt bgc-white-1" >
+					<!-- History -->
+					<div flex-align="space-between center" flex-item>
+						<history-canvas repeats="{{settings.maxHistory}}"></history-canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- SCRIPTS -->
+		<!-- COMPONENTS ANGULAR DEPENDENCIES -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/angular.min.js"></script>
+	<script src="js/velocity.min.js"></script>
+	<script src="js/moment-with-locales.min.js"></script>
+	<script src="js/ng-flow-standalone.min.js"></script>
+	<script src="js/lumx.min.js"></script>
+	<script src="js/rzslider.min.js"></script>
+	<script src="js/three.min.js"></script>
+	<script src="js/OrbitControls.js"></script>
+	<script src="js/hierarchy.js"></script>
+		<!-- APP  -->
+	<script src="./app/app.js"></script>
+		<!-- APP SERVICES -->
+	<script src="./app/services/uploader.service.js"></script>
+	<script src="./app/services/histogram.service.js"></script>
+	<script src="./app/services/scene.service.js"></script>
+	<script src="./app/services/toolbar.service.js"></script>
+		<!-- APP DIRECTIVES -->
+	<script src="./app/directives/image.canvas.directive.js"></script>
+	<script src="./app/directives/image.history.canvas.directive.js"></script>
+	<script src="./app/directives/toolbar.directive.js"></script>
+	<script src="./app/directives/scene.directive.js"></script>
+</body>
+</html>
